@@ -10,19 +10,7 @@
 
     public class MoodAnalyzer
     {
-        string message = string.Empty;
-
-        public MoodAnalyzer()
-        {
-
-        }
-
-        public MoodAnalyzer(string message)
-        {
-            this.message = message;
-        }
-
-        public string AnalyzeMood()
+        public string AnalyzeMood(string message)
         {
             var mood1 = message.Contains("Happy", StringComparison.OrdinalIgnoreCase);
             if (mood1)
@@ -38,6 +26,7 @@
             {
                 return "HAPPY";
             }
+            //return String.Empty;
         }
     }
 }
