@@ -10,23 +10,41 @@
 
     public class MoodAnalyzer
     {
-        public string AnalyzeMood(string message)
+        string message = string.Empty;
+
+        public MoodAnalyzer()
         {
-            var mood1 = message.Contains("Happy", StringComparison.OrdinalIgnoreCase);
-            if (mood1)
+
+        }
+
+        public MoodAnalyzer(string message)
+        {
+            this.message = message;
+        }
+
+        public string AnalyzeMood()
+        {
+            try
+            {
+                var mood1 = message.Contains("Happy", StringComparison.OrdinalIgnoreCase);
+                if (mood1)
+                {
+                    return "HAPPY";
+                }
+                var mood2 = message.Contains("Sad", StringComparison.OrdinalIgnoreCase);
+                if (mood2)
+                {
+                    return "SAD";
+                }
+                else
+                {
+                    return "HAPPY";
+                }
+            }
+            catch (Exception ex)
             {
                 return "HAPPY";
             }
-            var mood2 = message.Contains("Sad", StringComparison.OrdinalIgnoreCase);
-            if (mood2)
-            {
-                return "SAD";
-            }
-            else
-            {
-                return "HAPPY";
-            }
-            //return String.Empty;
         }
     }
 }
