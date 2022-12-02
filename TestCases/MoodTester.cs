@@ -61,5 +61,35 @@ namespace TestCases
 
             Assert.AreEqual(MoodAnalysisErrors.Empty.ToString(), result); //Assert
         }
+
+        [TestMethod]
+        public void CreateMoodAnalyzerObject_DefaultConstructor_UsingReflection()
+        {
+            MoodAnalyzerProblem.MoodAnalyzer objMood = new MoodAnalyzerProblem.MoodAnalyzer();
+
+            var objFactory = MoodAnalyzerFactory.CreateInstance("MoodAnalyzerProblem.MoodAnalyzer");
+
+            Assert.IsInstanceOfType(objMood, (Type)objFactory);
+        }
+
+        [TestMethod]
+        public void CreateMoodAnalyzerObject_DefaultConstructor_UsingReflection_GivenImproperClass_ReturnNoSuchClass()
+        {
+            //MoodAnalyzerProblem.MoodAnalyzer objMood = new MoodAnalyzerProblem.MoodAnalyzer();
+
+            var objFactory = (string)MoodAnalyzerFactory.CreateInstance("MoodAnalyzerProb.MoodAnalyzer");
+
+            Assert.AreEqual(MoodAnalysisErrors.NO_SUCH_CLASS.ToString(), objFactory);
+        }
+
+        [TestMethod]
+        public void CreateMoodAnalyzerObject_DefaultConstructor_UsingReflectionException_GivenImproperConstructor_ReturnNoSuchMethod()
+        {
+            //MoodAnalyzerProblem.MoodAnalyzer objMood = new MoodAnalyzerProblem.MoodAnalyzer();
+
+            var objFactory = (string)MoodAnalyzerFactory.CreateInstance("MoodAnalyzerProblem.MoodAnalyzer", "MoodAnalyzerFactor");
+
+            Assert.AreEqual(MoodAnalysisErrors.NO_SUCH_METHOD.ToString(), objFactory);
+        }
     }
 }
