@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace MoodAnalyzerProblem
 {
     public class MoodAnalyzer
-    {
+    {        
         public string message { get; set; }
 
         public MoodAnalyzer()
@@ -65,10 +65,6 @@ namespace MoodAnalyzerProblem
 
     public class MoodAnalyzerFactory
     {
-        public MoodAnalyzerFactory()
-        {
-
-        }
 
         public static object CreateInstance(string className, [Optional] string constructorName)
         {
@@ -105,5 +101,3 @@ namespace MoodAnalyzerProblem
         }
     }
 }
-
-
